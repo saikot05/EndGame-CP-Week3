@@ -84,3 +84,24 @@ var majorityElement = function(nums) {
     }
     return result;
 };
+//07. Subarray Sum Equals K
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var subarraySum = function(nums, k) {
+    const count = { 0: 1 };
+    let sum = 0;
+    let result = 0;
+
+    for (const num of nums) {
+        sum += num;
+        if (count[sum - k]) {
+            result += count[sum - k];
+        }
+        count[sum] = (count[sum] || 0) + 1;
+    }
+
+    return result;
+};
