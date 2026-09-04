@@ -32,3 +32,21 @@ var isAnagram = function(s, t) {
     if (s.length !== t.length) return false;
     return s.split('').sort().join('') === t.split('').sort().join('');
 };
+//04. Ransom Note
+/**
+ * @param {string} ransomNote
+ * @param {string} magazine
+ * @return {boolean}
+ */
+var canConstruct = function(ransomNote, magazine) {
+    if (ransomNote.length > magazine.length) return false;
+    const count = {};
+    for (const char of magazine) {
+        count[char] = (count[char] || 0) + 1;
+    }
+    for (const char of ransomNote) {
+        if (!count[char]) return false;
+        count[char]--;
+    }
+    return true;
+};
